@@ -35,10 +35,10 @@ private:
 };
 
 int main(void){
-    vector<int> w = {1,3};
+    vector<int> w = {1,3,4,2};
     Solution solution(w);
     vector<int> freq(w.size(), 0);
-    int times = 1000;
+    int times = 10000;
     for(int i=0;i<times;i++){
         freq[solution.pickIndex()]++;
     }
