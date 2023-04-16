@@ -16,31 +16,21 @@ using namespace std;
 class Solution {
 public:
     int maxValueOfCoins(vector<vector<int>>& piles, int k) {
-        n = k+1;
-        unordered_map<string, vector<int>> mem;
-        vector<int> indices(piles.size(), 0);
-        return dp(piles, indices, k, mem);
+        vector<vector<int>> mem(piles.size()+1, vector<int>(k+1, -1));
+        return dp(piles, piles.size(), k, mem);
     }
 private:
-    int n;
-    int dp(vector<vector<int>>& piles, vector<int>& indices, int k, unordered_map<string, vector<int>>& mem){
-        if(k==0) return 0;
-        string temp = "";
-        for(int index : indices){
-            temp+=to_string(index)+",";
-        }
-        if(mem.count(temp) && mem[temp][k]!=-1) return mem[temp][k];
+    int dp(vector<vector<int>>& piles, int index, int k, vector<vector<int>>& mem){
+        if(index==0) return 0;
+        if(mem[index][k]!=-1) return mem[index][k];
 
+        int temp = 0;
         int res = 0;
-        for(int i=0;i<indices.size();i++){
-            if(indices[i]<piles[i].size()){
-                indices[i]++;
-                res = max(res, dp(piles, indices, k-1, mem)+piles[i][indices[i]-1]);
-                indices[i]--;
-            }
+        for(int i=0;i<=min((int)piles[index-1].size(), k);i++){
+            if(i>0) temp+=piles[index-1][i-1];
+            res = max(res, dp(piles, index-1, k-i, mem)+temp);
         }
-        if(mem.count(temp)==0) mem[temp] = vector<int>(n, -1);
-        return mem[temp][k] = res;
+        return mem[index][k] = res;
     }
 };
 
