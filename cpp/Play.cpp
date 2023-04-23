@@ -11,12 +11,11 @@
 #include <array>
 #include <list>
 #include <thread>
-
-using namespace std;
+#include <numeric>
 
 int main()
 {
-    deque<int> q;
-    for(int i=0;i<10;i++) q.push_front(i);
+    std::string s = "12345";
+    std::cout << s.substr(1, 3) << std::endl;
     return 0;
 }
