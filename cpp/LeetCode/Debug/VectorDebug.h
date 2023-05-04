@@ -1,39 +1,37 @@
 #include <vector>
 
-using namespace std;
-
 template <typename T>
-void printVector(const vector<T>& v){
+void printVector(const std::vector<T>& v){
     if(v.size()==0){
-        cout << "[]" << endl;
+        std::cout << "[]" << std::endl;
         return;
     }
-    cout << "[ ";
+    std::cout << "[ ";
     for(T n : v){
-        cout << n << ", ";
+        std::cout << n << ", ";
     }
-    cout << "\b\b]" << endl;
+    std::cout << "\b\b]" << std::endl;
 }
 
 template <typename T>
-void print2DVector(const vector<vector<T>>& v){
+void print2DVector(const std::vector<std::vector<T>>& v){
     if(v.size()==0){
-        cout << "[]" << endl;
+        std::cout << "[]" << std::endl;
         return;
     }
-    cout << "[" << endl;
-    for(vector<T> r : v){
-        cout << "  [";
+    std::cout << "[" << std::endl;
+    for(std::vector<T> r : v){
+        std::cout << "  [";
         for(T n : r){
-            cout << n << ",";
+            std::cout << n << ",";
         }
-        cout << "\b]" << endl;
+        std::cout << "\b]" << std::endl;
     }
-    cout << "]" << endl;
+    std::cout << "]" << std::endl;
 }
 
 template <typename T>
-void refresh2DVector(const vector<vector<T>>& v){
+void refresh2DVector(const std::vector<std::vector<T>>& v){
     system("CLS");
     print2DVector(v);
 }
