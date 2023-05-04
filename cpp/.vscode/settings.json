@@ -74,6 +74,7 @@
         "semaphore": "cpp",
         "span": "cpp",
         "ranges": "cpp",
-        "numeric": "cpp"
+        "numeric": "cpp",
+        "optional": "cpp"
     }
 }
